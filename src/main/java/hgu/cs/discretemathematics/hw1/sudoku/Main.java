@@ -128,16 +128,25 @@ public class Main {
 				}
 				br.close();
 				
-
-				for(int s=0; s< 8; s++) { //input.txt의 row
-					for(int z = 0; z<8; z++) {//column
-						System.out.print(a[s][z]+" ");
-					}
-					System.out.println();
-				}
 			} catch (IOException e) {
 				e.printStackTrace();
 			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			
+			FileWriter out;
+			try {
+				out = new FileWriter("output.txt");
+				for(int s=0; s< 9; s++) { //input.txt의 row
+					for(int z = 0; z<9; z++) {//column
+						out.write(a[s][z]+" ");
+					}
+					out.write("\n");
+				}
+				
+				out.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 
