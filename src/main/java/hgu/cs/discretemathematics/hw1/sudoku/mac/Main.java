@@ -1,4 +1,4 @@
-package hgu.cs.discretemathematics.hw1.sudoku;
+package hgu.cs.discretemathematics.hw1.sudoku.mac;
 
 import java.io.BufferedReader;
 import java.io.File;

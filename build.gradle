@@ -11,7 +11,7 @@ plugins {
     id 'java-library'
 }
 apply plugin: 'application'
-mainClassName = "hgu.cs.discretemathematics.hw1.test.TestProcess"
+mainClassName = "hgu.cs.discretemathematics.hw1.sudoku.mac.Main"
 
 dependencies {
     // This dependency is exported to consumers, that is to say found on their compile classpath.
