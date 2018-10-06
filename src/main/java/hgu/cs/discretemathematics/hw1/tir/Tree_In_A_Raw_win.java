@@ -27,7 +27,7 @@ public class Tree_In_A_Raw_win {
 	int j=0;
 	int x, y ;
 	String [][]numbers = new String[8][8];
-	String outputPath = "./formula.txt";
+	String outputPath = ".\\formula.txt";
 	Scanner scanner = null;
 	FileWriter fileWriter = null;
 
@@ -135,7 +135,7 @@ public class Tree_In_A_Raw_win {
 			
 			FileWriter out;
 			try {
-				out = new FileWriter("./output.txt");
+				out = new FileWriter(".\\output.txt");
 				for(int s=0; s< 8; s++) { //input.txt의 row
 					for(int z = 0; z<8; z++) {//column
 						out.write(a[s][z]+" ");
