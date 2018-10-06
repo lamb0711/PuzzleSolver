@@ -13,19 +13,22 @@ sudoku, kakurasu, 3 in a raw 문제 해결
 ### Mac
 1. 스도쿠를 실행할 경우
 hgu.cs.discretemathematics.hw1.sudoku 패키지 안에 있는 Main.java클래스 에서 실행한다.
-이클립스의 run configuration에 <pre><code> -i input.txt </code></pre>을 한 후 코드를 실행한다.
+이클립스의 run configuration에 다음과 같은 명령어를 run configuration에 설정해준다.
+<pre><code> -i input.txt </code></pre>
 예시 파일을 돌려보고 싶다면 다음과 같은 명령어를 run configuration에 설정해준다.
 <pre><code>-i sudokuInput.txt </code></pre>
 
 2.  Three_In_A_Row를 실행할 경우
 hgu.cs.discretemathematics.hw1.tir 패키지 안에 있는 Three_In_A_Row.java클래스 에서 실행한다.
-이클립스의 run configuration에 <pre><code> -i input.txt을 한 후 코드를 실행한다.
+이클립스의 run configuration에 다음과 같은 명령어를 run configuration에 설정해준다.
+<pre><code> -i input.txt </code></pre>
 예시 파일을 돌려보고 싶다면 다음과 같은 명령어를 run configuration에 설정해준다.
 <pre><code> -i 3nr.txt </code></pre>
 
 3.  kakurasu를 실행할 경우
 hgu.cs.discretemathematics.hw1.kakurasu 패키지 안에 있는 kaku.java class에서 실행한다.
-이클립스의 run configuration에 <pre><code> -i input.txt </code></pre> 을 한 후 코드를 실행한다.
+이클립스의 run configuration에 다음과 같은 명령어를 run configuration에 설정해준다.
+<pre><code> -i input.txt </code></pre>
 예시 파일을 돌려보고 싶다면 다음과 같은 명령어를 run configuration에 설정해준다.
 <pre><code> -i kakurasuInput.txt </code></pre>
 
