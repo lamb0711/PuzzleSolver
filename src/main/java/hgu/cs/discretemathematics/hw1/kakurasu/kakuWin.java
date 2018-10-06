@@ -1,4 +1,4 @@
-package hgu.cs.discretemathematics.hw1.sudoku.mac;
+package hgu.cs.discretemathematics.hw1.kakurasu;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -16,16 +16,19 @@ import org.apache.commons.cli.HelpFormatter;
 import org.apache.commons.cli.Option;
 import org.apache.commons.cli.Options;
 
-public class Main {
+public class kakuWin {
 	String input;
 	boolean help;
 	String line;
 	String [][]a = new String[9][9];//[row][column]
 	int i=0;
 	int j=0;
+	int x, y ;
+	int [] col = new int[9];
+	int [] row = new int[9];
 
 	public static void main(String[] args) {
-		Main my = new Main();
+		kakuWin my = new kakuWin();
 		my.run(args);
 	}
 
@@ -38,78 +41,49 @@ public class Main {
 				return;
 			}
 
-
 			try{
-				FileWriter bw = new FileWriter("formula.txt");
-
-				int x=0;
-				int y=0;
-
-				//정의
-				for (x = 1 ; x <= 9 ; x++){
-					for (y = 1 ; y <= 9 ; y++){
-						bw.write("(declare-const a"+x+y+" Int)\n") ;
-					}
-				}
-
-				//파일 읽기
 				Scanner scanner = new Scanner(new File(input));
-				for(x=1 ; x<=9 ; x++){
-					for(y=1; y<=9 ; y++){
-						String s = scanner.next();
-						if(!(s.equals("?"))){
-							int i = Integer.parseInt(s);
-							bw.write("(assert (= a"+x+y+" "+i+"))\n") ;
-						}
-					}
+
+				for(int i = 1; i <= 8; i++) {
+					String s = scanner.next();
+					row[i] = Integer.parseInt(s);
+				}
+				for(int i = 1; i <= 8; i++) {
+					String s = scanner.next();
+					col[i] = Integer.parseInt(s);
+				} 
+
+				FileWriter fileWriter = new FileWriter(new File(".\\formula.txt"));
+
+				for (y = 1 ; y <= 8 ; y++)
+					for (x = 1 ; x <= 8 ; x++) 
+						fileWriter.write("(declare-const a" + y + x + " Int)\n");    
+
+				for (y = 1 ; y <= 8 ; y++)
+					for (x = 1 ; x <= 8 ; x++) 
+						fileWriter.write("(assert (and (<= a" + y + x + " 1) (<= 0 a" + y + x + ")))\n");
+
+
+				for (y = 1 ; y <= 8 ; y++){
+					fileWriter.write("(assert (= (+ ");
+					for (x = 1 ; x <= 8 ; x++)  fileWriter.write("(* a" + y + x +" "+ x + ")");
+					fileWriter.write(") "+ row[y] +"))\n");
 				}
 
-				//모든 범위는 1~9 사이 이다.
-				for (x = 1 ; x <= 9 ; x++){
-					for (y = 1 ; y <= 9 ; y++){
-						bw.write("(assert (and (<= a"+x+y+" 9) (<= 1 a"+x+y+")))\n") ;
-					}
+				for (x = 1 ; x <= 8 ; x++){
+					fileWriter.write("(assert (= (+ ");
+					for (y = 1 ; y <= 8 ; y++)  fileWriter.write("(* a" + y + x + " " + y + " )");
+					fileWriter.write(") " + col[x] + "))\n");
 				}
 
-				//각 행은 서로 다른 수를 가진다.
-				for (x = 1 ; x <= 9 ; x++){
-					bw.write("(assert (distinct");
-					for (y = 1 ; y <= 9 ; y++){
-						bw.write(" a"+x+y) ;
-					}
-					bw.write("))\n");
-				}
-
-				//각 열은 서로 다른 수를 가진다.
-				for (x = 1 ; x <= 9 ; x++){
-					bw.write("(assert (distinct");
-					for (y = 1 ; y <= 9 ; y++){
-						bw.write(" a"+y+x) ;
-					}
-					bw.write("))\n");
-				}
-
-				//각 칸은 서로 다른 수를 가진다.
-				for(x=1 ;x<=3 ; x++){
-					for(y=1 ; y<=3 ; y++){
-						bw.write("(assert (distinct");
-						for(int i=1 ; i<=3 ; i++){
-							for(int j=1 ; j<=3 ; j++){
-								bw.write(" a"+((x-1)*3+i)+((y-1)*3+j));
-							}
-						}
-						bw.write("))\n");
-					}
-				}
-
-				bw.write("(check-sat)\n(get-model)");
+				fileWriter.write("(check-sat)\n(get-model)\n");
 
 				scanner.close();
-				bw.close();
+				fileWriter.close();
 				
 				Pattern pattern = Pattern.compile("(.+a(.)(.))(.+\\s+(.))");
-				
-				ProcessBuilder builder = new ProcessBuilder("./z3","./formula.txt");
+
+				ProcessBuilder builder = new ProcessBuilder(".\\z3",".\\formula.txt");
 				Process p = builder.start();
 				p.waitFor();
 				BufferedReader br = new BufferedReader(new InputStreamReader(p.getInputStream()));
@@ -127,18 +101,18 @@ public class Main {
 					}
 				}
 				br.close();
-				
+
 			} catch (IOException e) {
 				e.printStackTrace();
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-			
+
 			FileWriter out;
 			try {
-				out = new FileWriter("output.txt");
-				for(int s=0; s< 9; s++) { //input.txt의 row
-					for(int z = 0; z<9; z++) {//column
+				out = new FileWriter(".\\output.txt");
+				for(int s=0; s< 8; s++) { //input.txt의 row
+					for(int z = 0; z<8; z++) {//column
 						out.write(a[s][z]+" ");
 					}
 					out.write("\n");
@@ -191,7 +165,5 @@ public class Main {
 
 		return options;	
 	}
-
-
 
 }

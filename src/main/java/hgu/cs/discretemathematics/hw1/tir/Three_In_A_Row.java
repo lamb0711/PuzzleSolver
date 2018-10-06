@@ -61,7 +61,6 @@ public class Three_In_A_Row {
 
 				for(y = 1 ; y <=8 ; y ++) {
 					for(x = 1; x <= 8 ; x ++) {
-						System.out.println("(declare-const a"+ y + x+ " Int)");
 						fileWriter.write("(declare-const a"+ y + x+ " Int)\n");
 					}
 				}
@@ -118,7 +117,10 @@ public class Three_In_A_Row {
 						while(matcher.find()) {
 							i = Integer.parseInt(matcher.group(2));
 							j = Integer.parseInt(matcher.group(3));
-							a[i-1][j-1] = matcher.group(5);
+							if(Integer.parseInt(matcher.group(5)) == 1) {
+								a[i-1][j-1] = "X";
+							}else
+								a[i-1][j-1] = "O";
 						}
 					}
 				}

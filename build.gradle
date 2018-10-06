@@ -10,8 +10,9 @@ plugins {
     // Apply the java-library plugin to add support for Java Library
     id 'java-library'
 }
+
 apply plugin: 'application'
-mainClassName = "hgu.cs.discretemathematics.hw1.sudoku.mac.Main"
+mainClassName = "hgu.cs.discretemathematics.hw1.sudoku.Main"
 
 dependencies {
     // This dependency is exported to consumers, that is to say found on their compile classpath.
