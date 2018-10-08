@@ -105,7 +105,7 @@ public class Tree_In_A_Raw_win {
 				
 				Pattern pattern = Pattern.compile("(.+a(.)(.))(.+\\s+(.))");
 				
-				ProcessBuilder builder = new ProcessBuilder("./z3","./formula.txt");
+				ProcessBuilder builder = new ProcessBuilder("./z3.exe","./formula.txt");
 				Process p = builder.start();
 				p.waitFor();
 				BufferedReader br = new BufferedReader(new InputStreamReader(p.getInputStream()));
