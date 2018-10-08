@@ -1,5 +1,5 @@
 # PuzzleSolver
-solved sudoku, kakurasu, 3 in a raw
+Solve sudoku, kakurasu, 3 in a raw puzzles.
 
 ### Manaul
 This PuzzleSolver use the apache cli library.
