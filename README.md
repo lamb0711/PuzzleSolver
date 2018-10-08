@@ -37,4 +37,5 @@ Same to Mac 2 package. Run it Three_In_A_Row_win.java class. It has same input o
 3. kakurasu
 Same to Mac 3 package. Run it kakuWin.java class. It has same input option to Mac 3
 
-If you have difficulty, you can get help through the -h option.
+
+## If you have difficulty, you can get help through the -h option.
