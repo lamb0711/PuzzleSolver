@@ -7,8 +7,8 @@ This PuzzleSolver use the apache cli library.
 1.	Open terminal or  PowerShell or cmd. And Please type the following instruction.
 <pre><code> git clone https://github.com/lamb0711/PuzzleSolver.git </code></pre>
 2.	Save the input txt file that you want to solve to ./PuzzleSolver.
-3.	We using Eclipse. So we recommend using Eclipse.
-Add the PuzzleSover project to Eclipse by right-clicking -> import -> PuzzleSolver.
+3.	We using Eclipse. So we recommend using Eclipse. And you must install gradle that open-source build tool. 
+Add the PuzzleSover project to Eclipse by right-clicking -> import -> gradle project -> PuzzleSolver ->finish button.
 
 ## Mac
 1. Sudoku
